@@ -131,7 +131,8 @@ class Script:
         logging.info(spawn_command)
         self.process = pexpect.spawn(spawn_command,
                                      logfile=None)
-
+        term_size = os.get_terminal_size()
+        self.process.setwinsize(term_size.width, term_size.height) 
         self.process.expect("\n")
         self.process.expect("\n")
 
