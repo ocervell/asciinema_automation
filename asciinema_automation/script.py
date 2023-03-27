@@ -1,6 +1,7 @@
 import codecs
 import pathlib
 import re
+import os
 import time
 import pexpect
 import logging
@@ -132,7 +133,7 @@ class Script:
         self.process = pexpect.spawn(spawn_command,
                                      logfile=None)
         term_size = os.get_terminal_size()
-        self.process.setwinsize(term_size.width, term_size.height) 
+        self.process.setwinsize(term_size.columns, term_size.lines) 
         self.process.expect("\n")
         self.process.expect("\n")
 
